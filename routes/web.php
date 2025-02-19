@@ -40,9 +40,10 @@ route::get(
 /*Teste para redirecionamento de rotas*/ 
 
 route::get('/rota1', function() {
+    echo 'esta é a rota 1';
 
 }) -> name ('site.rota1');
 
 route::get('/rota2', function(){
-    echo 'Esta é a rota de teste 2';
+    return redirect()-> route('site.rota1');
 })-> name('site.rota2');
