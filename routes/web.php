@@ -40,10 +40,15 @@ route::get(
 /*Teste para redirecionamento de rotas*/ 
 
 route::get('/rota1', function() {
-    echo 'esta é a rota 1';
+    echo 'Esta é a rota 1';
 
 }) -> name ('site.rota1');
 
 route::get('/rota2', function(){
     return redirect()-> route('site.rota1');
 })-> name('site.rota2');
+
+route::fallback(function(){
+    echo 'A rota que está tentando acessar não existe. <a href= "'.route('site.index').'"> clique aqui </a>'; 
+    echo 'para ser redirecionado para a pagina principal';
+});
