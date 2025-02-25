@@ -37,6 +37,8 @@ route::get(
     echo "teste $nome - $cpf - $email";
 })-> where ('nome', '[A-Za-z]+'); 
 
+route::get('/teste2/{pi}/{p2}', 'TesteController@teste')-> name('teste');
+
 /*Teste para redirecionamento de rotas*/ 
 
 route::get('/rota1', function() {
@@ -47,6 +49,7 @@ route::get('/rota1', function() {
 route::get('/rota2', function(){
     return redirect()-> route('site.rota1');
 })-> name('site.rota2');
+
 
 route::fallback(function(){
     echo 'A rota que está tentando acessar não existe. <a href= "'.route('site.index').'"> clique aqui </a>'; 
